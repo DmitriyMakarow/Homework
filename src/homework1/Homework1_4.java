@@ -10,7 +10,7 @@ public class Homework1_4
     public static void main(String[] args) {
 
         double n = 3.14; // присваиваем переменной n значение с ненулевой дробной частью
-
+        n = n + 0.5; // добавляем к переменной n + 0.5 для корректного округления
         System.out.println((int)n); // выводим n как целочисленное
     }
 }
