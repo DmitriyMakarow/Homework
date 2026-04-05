@@ -7,22 +7,14 @@ public class CardOperations {
         создание трех объектов класса CreditCard у которых заданы
         номер счета и начальная сумма
          */
-        CreditCard creditCardMir = new CreditCard();
-        creditCardMir.accountNumber = "1234-5678-9024-5212";
-        creditCardMir.balance = 237;
-
-        CreditCard creditCardVisa = new CreditCard();
-        creditCardVisa.accountNumber = "0987-6543-2135-4363";
-        creditCardVisa.balance = 10000;
-
-        CreditCard creditCardMaster = new CreditCard();
-        creditCardMaster.accountNumber = "1253-2634-2637-5356";
-        creditCardMaster.balance = 20000;
+        CreditCard creditCardMir = new CreditCard("1234-5678-9024-5212", 1000);
+        CreditCard creditCardVisa = new CreditCard("0987-6543-2135-4363", 10000);
+        CreditCard creditCardMaster = new CreditCard("1253-2634-2637-5356", 2000);
 
         // тестовый сценарий
-        creditCardMir.deposit();
-        creditCardVisa.deposit();
-        creditCardMaster.withdraw();
+        creditCardMir.deposit(11000); // Положить деньги на первую карту
+        creditCardVisa.deposit(5000); // Положить деньги на вторую карту
+        creditCardMaster.withdraw(1500); // Снять деньги с третьей карты
 
         // вывод текущего состояния трех карт
         creditCardMir.cardInfo();

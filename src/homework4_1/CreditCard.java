@@ -1,7 +1,5 @@
 package homework4_1;
 
-import java.util.Scanner;
-
 public class CreditCard {
 
     /*
@@ -17,38 +15,34 @@ public class CreditCard {
 
     String accountNumber; // номер счета
     double balance; // текущая сумма на счете
-    int deposit; // пополнение карты
-    int withdraw; // снятие с карты
-    Scanner scanner = new Scanner(System.in);
+
+    //конструктор для инициализации номера счета и начальной суммы
+    public CreditCard(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
 
     // метод начисления суммы на кредитную карту
-    public void deposit() {
-        System.out.println("Введите сумму, на которую хотите пополнить баланс счета: " + accountNumber);
-        deposit = scanner.nextInt(); // ввод суммы пополнения пользователем
-        if (deposit > 0) {
-            balance += deposit; // текущий баланс счета после пополнения
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;// текущий баланс счета после пополнения
         }
     }
 
     // метод снятия суммы с кредитной карты
-    public void withdraw() {
-        System.out.println("Введите сумму, которую желаете снять со счета: " + accountNumber);
-        while (true) {
-            if (scanner.hasNextInt()) {
-                withdraw = scanner.nextInt();
-                if (withdraw < balance && withdraw > 0) { // проверка, что сумма снятия меньше баланса и больше 0
-                    balance -= withdraw;
-                    break; // Корректная сумма, выводим из цикла
-                } else {
-                    System.out.println("Недостаточно средств или неверная сумма. Введите корректную сумму.");
-                    System.out.println();
-                }
-            }
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) { // проверка, что сумма снятия меньше баланса и больше 0
+            balance -= amount;
+        } else {
+            System.out.println("Недостаточно средств или неверная сумма для снятия.");
+            System.out.println();
         }
     }
 
     // текущая информация о карте
     public void cardInfo() {
-        System.out.println("Номер счета: " + accountNumber + " Текущий баланс: " + balance + " руб.");
+        System.out.println("Номер счета: " + accountNumber);
+        System.out.println("Текущая сумма: " + balance);
+        System.out.println();
     }
 }
